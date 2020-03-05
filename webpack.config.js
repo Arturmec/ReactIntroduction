@@ -36,6 +36,12 @@ module.exports = {
           /** Usado para o webpack entender importações */
           { loader: 'css-loader' },
         ]
+      }, {
+        /** Permite a importação de imagens */
+        test: /.*\.(gif|png|jpg)$/i,
+        use: {
+          loader: 'file-loader'
+        }
       }
     ]
   }
