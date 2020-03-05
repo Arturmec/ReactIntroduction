@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-
+import TechItem from './TechItem'
+/** O componente foi criado na forma de class para conter um estado */
 class TechList extends Component {
   /** 
   * Estado do componente: guarda todas as informações que podem ser 
@@ -52,12 +53,13 @@ class TechList extends Component {
       /** Percorre array de tecnologias */
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.techs.map(tech => (
-            <li key={tech}>
-              {tech}
-              <button onClick={() => this.handleDelete(tech)} type="button">Remover</button>
-            </li>
-          ))}     
+          {this.state.techs.map(tech => 
+            <TechItem 
+              key={tech} 
+              tech={tech} 
+              onDelete={() => this.handleDelete(tech)} 
+            />
+          )}     
         </ul>
         <input 
           type="text" 
