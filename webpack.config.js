@@ -25,6 +25,17 @@ module.exports = {
         use:{
           loader: 'babel-loader'
         }
+      }, {
+        test:/\.css$/,
+        use: [
+          /** 
+          * Pega o código CSS com o estilo de letras, por exemplo, e joga
+          * para o html dentro de uma tag style 
+          */
+          { loader: 'style-loader' },
+          /** Usado para o webpack entender importações */
+          { loader: 'css-loader' },
+        ]
       }
     ]
   }
