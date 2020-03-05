@@ -9,4 +9,7 @@ module.exports = {
     /** Alterar as funcionalidades do React que o navegador não entende */
     "@babel/preset-react"
   ],
+  plugins: [
+    '@babel/plugin-proposal-class-properties'
+  ]
 }
