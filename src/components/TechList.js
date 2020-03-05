@@ -16,7 +16,34 @@ class TechList extends Component {
       'React Native'
     ]
   };
+  /** 
+  * Executado assim que o componente entra em tela
+  * Pode fazer qualque tipo de alteração ou execução
+  */
+  componentDidMount(){ 
+    const techs = localStorage.getItem('techs');
+    /** Se existir algo em techs...*/
+    if (techs){
+      /** ... preenche techs com o json */
+      this.setState({ techs: JSON.parse(techs) });
+    }
+  }
 
+  /** 
+  * Executado sempre que houver modificação nas props ou estado 
+  * Recebe as antigas propriedades e o antigo estado como parâmetro 
+  */
+  componentDidUpdate(_, prevState){
+    if(prevState.techs !== this.state.techs){
+      /** Salva no banco de dados do browser na forma de json */
+      localStorage.setItem('techs', JSON.stringify(this.state.techs))
+    }
+  }
+
+  /** Executado quando o componente deixa de existir */
+  componentWillUnmount(){
+
+  }
   /** 
   * Precisa ser arrow function para poder acessar outras propriedas da classe 
   * Método armazena o valor do input em 'newTech' 
