@@ -37,6 +37,11 @@ class TechList extends Component {
       newTech: ''
     });
   }
+  /** Procura dentro do state um tech com o mesmo nome de outro na state e deleta */
+  handleDelete = (tech) => {
+    /** Utiliza método filter para fitrar o array */
+    this.setState({ techs: this.state.techs.filter(t => t !== tech) })
+  }
 
   /** 
   * Todo componente escrito na forma de classe precisa, obrigatoriamente, 
@@ -47,7 +52,12 @@ class TechList extends Component {
       /** Percorre array de tecnologias */
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.techs.map(tech => <li key={tech}>{tech}</li>)}     
+          {this.state.techs.map(tech => (
+            <li key={tech}>
+              {tech}
+              <button onClick={() => this.handleDelete(tech)} type="button">Remover</button>
+            </li>
+          ))}     
         </ul>
         <input 
           type="text" 
